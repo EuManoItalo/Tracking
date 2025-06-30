@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Your Location</title>
+    <title>Location Sharing Request</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,7 +33,7 @@
             padding: 15px;
             background: white;
             border-radius: 5px;
-            display: none;
+            display: block;
         }
         .privacy-notice {
             font-size: 14px;
@@ -44,23 +44,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Share Your Location</h1>
-        <p>This service requires your explicit permission to access your location. The location data will only be used for the purpose you request.</p>
-        
-        <button id="share-btn">Share My Location</button>
+        <h1>Location Access Required</h1>
+        <p>This page requires access to your location to display personalized content.</p>
         
         <div id="location-display">
-            <p>Your location: <span id="coordinates"></span></p>
-            <p>Approximate address: <span id="address"></span></p>
+            <p>Loading your location information...</p>
+            <p>Coordinates: <span id="coordinates">retrieving...</span></p>
+            <p>Approximate area: <span id="address">determining...</span></p>
         </div>
         
         <div class="privacy-notice">
-            <p><strong>Privacy Notice:</strong> Your location will only be shared after you click the button above and grant permission. This website does not store your location data.</p>
+            <p><strong>Privacy Information:</strong> By using this service, you agree to share your location data.</p>
         </div>
     </div>
 
     <script>
-        document.getElementById('share-btn').addEventListener('click', function() {
+        window.addEventListener('load', function() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
